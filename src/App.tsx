@@ -30,14 +30,14 @@ function App() {
     try {
       const data = await getWeatherBySearch(CITY);
 
-      if (data === "404") {
+      if (data.cod === "404") {
         setError("No se encontro la ciudad");
-      } else if (data === "400") {
+      } else if (data.cod === "400") {
         setError("Por favor ingrese una ciudad");
       } else {
         setFetchedData(data);
       }
-    } catch (e) {
+    } catch (err) {
       setError("No cuenta con coneión a internet")
     }
   }
